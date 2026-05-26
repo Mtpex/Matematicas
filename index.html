@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecuación Cuadrática - Guía de Estudio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* --- ESTILOS GLOBALES ESTILO PASTEL --- */
+        :root {
+            --bg-color: #f0f4ff; 
+            --card-bg: #ffffff;
+            --text-main: #4b5563;
+            --title-color: #6366f1; 
+            --accent-purple: #c7d2fe;
+            --accent-blue: #bfdbfe;
+            --accent-green: #bbf7d0;
+            --border-color: #e0e7ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(#d8b4fe 1px, transparent 1px);
+            background-size: 30px 30px; 
+            color: var(--text-main);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            backdrop-filter: blur(5px);
+            border: 2px solid white;
+        }
+
+        /* --- ENCABEZADO --- */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .main-title {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 
+                -2px -2px 0 #8b5cf6,  
+                 2px -2px 0 #8b5cf6,
+                -2px  2px 0 #8b5cf6,
+                 2px  2px 0 #8b5cf6,
+                 4px  4px 0 #a855f7; 
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            display: inline-block;
+            background-color: #a855f7;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* --- INTEGRANTES --- */
+        .integrantes-box {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .box-title {
+            color: var(--title-color);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .team-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .member {
+            background: #f8fafc;
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            padding: 15px;
+            width: 120px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
+        }
+
+        .avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 3px solid var(--accent-blue);
+        }
+
+        .member-name {
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: var(--title-color);
+        }
+
+        /* --- GRID DE CONTENIDO --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .card-header {
+            background-color: var(--accent-purple);
+            color: #4338ca;
+            padding: 5px 15px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        /* --- FÓRMULAS --- */
+        .formula-box {
+            background: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-family: 'Times New Roman', Times, serif;
+            color: #1e293b;
+            margin: 15px 0;
+        }
+
+        .frac {
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .frac-top {
+            border-bottom: 2px solid #1e293b;
+            padding-bottom: 2px;
+        }
+
+        /* --- VIDEO CONTENEDOR YOUTUBE --- */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; 
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            border: 3px solid var(--accent-blue);
+            width: 100%;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- REPRODUCTOR DE VIDEO LOCAL --- */
+        .local-video-player {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 15px;
+            border: 4px solid var(--accent-green);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            outline: none;
+        }
+
+        /* --- NUBE DE ENLACES --- */
+        .nube-enlaces {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .enlace-pill {
+            background-color: #f1f5f9;
+            border: 2px solid var(--accent-purple);
+            color: var(--title-color);
+            padding: 10px 18px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .enlace-pill:hover {
+            background-color: var(--accent-purple);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);
+        }
+
+        /* --- MODAL (MINI VENTANA) --- */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); 
+            backdrop-filter: blur(4px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-contenido {
+            background-color: white;
+            border-radius: 25px;
+            padding: 30px;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            border: 4px solid var(--accent-purple);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            position: relative;
+            animation: saltito 0.3s ease-out;
+        }
+
+        @keyframes saltito {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .cerrar {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #9ca3af;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-opcion {
+            background-color: #f1f5f9;
+            border: 2px solid #cbd5e1;
+            padding: 12px 20px;
+            margin: 8px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            color: #334155;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+        .btn-opcion:hover:not(:disabled) {
+            background-color: var(--accent-blue);
+            border-color: var(--title-color);
+        }
+
+        .btn-siguiente {
+            background-color: var(--title-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            display: none; /* Oculto por defecto */
+            box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .btn-siguiente:hover {
+            transform: scale(1.05);
+            background-color: #4f46e5;
+        }
+
+        .btn-abrir-juego {
+            background-color: #f472b6;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(244, 114, 182, 0.4);
+            transition: transform 0.2s;
+            width: 100%;
+        }
+
+        .btn-abrir-juego:hover {
+            transform: scale(1.05);
+            background-color: #db2777;
+        }
+
+        /* --- FOOTER / MENSAJE --- */
+        .footer-msg {
+            text-align: center;
+            margin-top: 30px;
+            color: #6366f1;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid { grid-template-columns: 1fr; }
+            .main-title { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header class="header">
+            <h1 class="main-title">Ecuación Cuadrática</h1>
+            <div class="subtitle"> Guía de estudio </div>
+        </header>
+
+        <section class="integrantes-box">
+            <div class="box-title"> Integrantes </div>
+            <div class="team-grid">
+                <div class="member">
+                    <img src="canga.jpg" onerror="this.src='canga.jpeg'" alt="Canga" class="avatar" style="border-color: #93c5fd;">
+                    <div class="member-name">Canga</div>
+                    <div>⭐</div>
+                </div>
+                <div class="member">
+                    <img src="dayana.jpg" onerror="this.src='dayana.jpeg'" alt="Dayana" class="avatar" style="border-color: #c4b5fd;">
+                    <div class="member-name">Dayana</div>
+                    <div>⭐</div>
+                </div>
+                <div class="member">
+                    <img src="mateo.jpg" onerror="this.src='mateo.jpeg'" alt="Mateo" class="avatar" style="border-color: #93c5fd;">
+                    <div class="member-name">Mateo</div>
+                    <div>⭐</div>
+                </div>
+                <div class="member">
+                    <img src="koralis.jpg" onerror="this.src='koralis.jpeg'" alt="Koralis" class="avatar" style="border-color: #6ee7b7;">
+                    <div class="member-name">Koralis</div>
+                    <div>⭐</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="content-grid">
+            
+            <div class="card">
+                <div class="card-header"> ¿Qué es una ecuación cuadrática?</div>
+                <p>Una ecuación cuadrática es una igualdad matemática que se puede escribir en la forma general:</p>
+                <div class="formula-box" style="font-size: 1.3rem;">
+                    ax&sup2; + bx + c = 0
+                </div>
+                <p style="font-size: 0.9rem; color: #64748b;">donde <strong>a</strong>, <strong>b</strong> y <strong>c</strong> son números reales y <strong>a &ne; 0</strong>.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header"> Fórmula general</div>
+                <p>Las soluciones de la ecuación cuadrática se pueden encontrar con la fórmula general:</p>
+                <div class="formula-box">
+                    x = <span class="frac">
+                        <span class="frac-top">-b &plusmn; &radic;(b&sup2; - 4ac)</span>
+                        <span>2a</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header"> Ejemplo de la vida cotidiana</div>
+                <p style="font-size: 0.95rem; margin-bottom: 10px;">
+                    Un jardín rectangular tiene un área de 48 m². Si el largo mide (x + 4) metros y el ancho mide (x - 2) metros, ¿cuáles son las dimensiones del jardín?
+                </p>
+                <div style="background: #eef2ff; padding: 10px; border-radius: 10px; font-size: 0.9rem;">
+                    <strong>Planteamos la ecuación:</strong><br>
+                    (x + 4)(x - 2) = 48<br>
+                    x&sup2; + 4x - 2x - 8 = 48<br>
+                    x&sup2; + 2x - 56 = 0
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header"> ¡Mira y aprende!</div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/BxrJmKdPHRs" title="Video explicativo sobre ecuaciones cuadráticas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <p style="text-align: center; font-size: 0.85rem; margin-top: 10px; color: #64748b;">Video explicativo de referencia</p>
+            </div>
+
+            <div class="card" style="grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; text-align: center; background-color: #fdf2f8; border-color: #fbcfe8;">
+                <div class="card-header" style="background-color: #fbcfe8; color: #be185d;"> ¡Practiquemos!</div>
+                <p style="margin-bottom: 20px;">Es hora de poner a prueba lo que aprendiste de forma rápida.</p>
+                <button class="btn-abrir-juego" onclick="abrirModal()">Abrir Actividad Interactiva </button>
+            </div>
+
+            <div class="card" style="grid-column: 1 / -1; text-align: center; background-color: #f0fdf4; border-color: #bbf7d0;">
+                <div class="card-header" style="background-color: #bbf7d0; color: #166534;">🏫 Nuestro Proyecto del Colegio</div>
+                <p style="margin-bottom: 20px; font-weight: bold; color: #15803d;">Unidad Educativa María Auxiliadora</p>
+                
+                <div style="display: flex; justify-content: center; width: 100%;">
+                    <video controls class="local-video-player">
+                        <source src="video_colegio.mp4" type="video/mp4">
+                        Tu navegador no soporta la reproducción de videos.
+                    </video>
+                </div>
+                <p style="text-align: center; font-size: 0.9rem; margin-top: 15px; color: #166534;">
+                    ¡Las matemáticas no son solo números, están en todo lo que nos rodea y nos conectan!
+                </p>
+            </div>
+
+            <div class="card" style="grid-column: 1 / -1; text-align: center;">
+                <div class="card-header"> Nube de Recursos </div>
+                <p style="margin-bottom: 10px;">¡Explora estos enlaces para seguir aprendiendo y dominar el tema!</p>
+                <div class="nube-enlaces">
+                    <a href="https://matemovil.com/ecuaciones-cuadraticas-ejercicios-resueltos/" target="_blank" class="enlace-pill"> Ejercicios Matemóvil</a>
+                    <a href="https://www.youtube.com/watch?v=oe-tzAnjUyA" target="_blank" class="enlace-pill">▶ Video Explicativo</a>
+                    <a href="https://www.redmagisterial.com/recursos-med/26370-ecuaciones-cuadraticas-formula-general/" target="_blank" class="enlace-pill"> Red Magisterial</a>
+                    <a href="https://didactalia.net/it/comunita/materialeducativo/risorsa/ecuaciones-cuadraticas-2-khan-academy-espaol/c911e4a4-0de5-4df5-987b-4c58087061d7" target="_blank" class="enlace-pill"> Khan Academy</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-msg">
+            Las matemáticas abren puertas a infinitas posibilidades 
+        </div>
+
+    </div>
+
+    <div id="miModal" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarModal()">&times;</span>
+            <h2 style="color: var(--title-color); margin-bottom: 15px;">¡A resolver! </h2>
+            
+            <p id="texto-instruccion" style="color: #64748b; margin-bottom: 10px;"></p>
+            
+            <div id="ecuacion-juego" class="formula-box" style="width: 80%; margin: 15px auto;">
+                </div>
+            
+            <div id="opciones-juego" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
+                </div>
+
+            <p id="mensaje-juego" style="margin-top: 20px; font-weight: bold; font-size: 1.2rem; min-height: 25px;"></p>
+            
+            <button id="btn-siguiente" class="btn-siguiente" onclick="siguientePregunta()">Siguiente Ejercicio </button>
+        </div>
+    </div>
+
+    <script>
+        const listaEjercicios = [
+            {
+                ecuacion: "x&sup2; + 5x + 6 = 0",
+                opciones: ["A) x = 2 , x = 3", "B) x = -2 , x = -3"],
+                correcta: 1 
+            },
+            {
+                ecuacion: "x&sup2; - 4x + 4 = 0",
+                opciones: ["A) x = 2", "B) x = -2", "C) x = 4"],
+                correcta: 0 
+            },
+            {
+                ecuacion: "x&sup2; - 9 = 0",
+                opciones: ["A) x = 3 , x = -3", "B) x = 9 , x = -9"],
+                correcta: 0 
+            }
+        ];
+
+        let preguntaActual = 0;
+        
+        const modal = document.getElementById("miModal");
+        const textoInstruccion = document.getElementById("texto-instruccion");
+        const divEcuacion = document.getElementById("ecuacion-juego");
+        const divOpciones = document.getElementById("opciones-juego");
+        const mensaje = document.getElementById("mensaje-juego");
+        const btnSiguiente = document.getElementById("btn-siguiente");
+
+        function abrirModal() {
+            modal.style.display = "flex";
+            preguntaActual = 0; 
+            cargarPregunta();
+        }
+
+        function cerrarModal() {
+            modal.style.display = "none";
+        }
+
+        function cargarPregunta() {
+            mensaje.innerText = "";
+            btnSiguiente.style.display = "none";
+            divOpciones.innerHTML = ""; 
+            
+            if (preguntaActual < listaEjercicios.length) {
+                let ej = listaEjercicios[preguntaActual];
+                textoInstruccion.innerText = "Ejercicio " + (preguntaActual + 1) + " de " + listaEjercicios.length + ":";
+                divEcuacion.innerHTML = ej.ecuacion;
+                
+                
+                ej.opciones.forEach(function(opcionTexto, indice) {
+                    let btn = document.createElement("button");
+                    btn.className = "btn-opcion";
+                    btn.innerText = opcionTexto;
+                    btn.onclick = function() { verificarRespuesta(indice, btn); };
+                    divOpciones.appendChild(btn);
+                });
+            } else {
+                textoInstruccion.innerText = "¡Excelente trabajo!";
+                divEcuacion.innerHTML = " ¡Completaste todos los ejercicios! ";
+                divOpciones.innerHTML = "";
+                mensaje.innerText = "";
+            }
+        }
+
+        function verificarRespuesta(indiceElegido, botonClickeado) {
+            let ej = listaEjercicios[preguntaActual];
+            
+           
+            let botones = divOpciones.getElementsByTagName("button");
+            for(let b of botones) {
+                b.disabled = true;
+                b.style.opacity = "0.6";
+                b.style.cursor = "default";
+            }
+
+            if (indiceElegido === ej.correcta) {
+                mensaje.style.color = "#16a34a"; // Verde
+                mensaje.innerText = "¡Correcto! Eres genial. ";
+                botonClickeado.style.backgroundColor = "#bbf7d0"; 
+                botonClickeado.style.borderColor = "#16a34a";
+                btnSiguiente.style.display = "inline-block"; 
+            } else {
+                mensaje.style.color = "#ef4444"; 
+                mensaje.innerText = "Ups, respuesta incorrecta. ";
+                botonClickeado.style.backgroundColor = "#fecaca";
+                botonClickeado.style.borderColor = "#ef4444";
+                
+                
+                btnSiguiente.innerText = "Intentar de nuevo ";
+                btnSiguiente.style.backgroundColor = "#f43f5e";
+                btnSiguiente.onclick = cargarPregunta; 
+                btnSiguiente.style.display = "inline-block";
+            }
+        }
+
+        function siguientePregunta() {
+            // Restaurar estilo del botón siguiente
+            btnSiguiente.innerText = "Siguiente Ejercicio ";
+            btnSiguiente.style.backgroundColor = "var(--title-color)";
+            btnSiguiente.onclick = siguientePregunta; 
+            
+            preguntaActual++;
+            cargarPregunta();
+        }
+
+        // Si hacen clic fuera de la ventana, se cierra
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                cerrarModal();
+            }
+        }
+    </script>
+
+</body>
+</html>
